@@ -55,7 +55,7 @@ echo "Install the cross compiler..."
 sudo apt install g++-aarch64-linux-gnu gcc-aarch64-linux-gnu
 
 echo "Running the cross compilation for ROS2.."
-sudo ./build_ros2.bash/build_ros2.bash
+sudo ./build_ros2.bash
 
 
 
