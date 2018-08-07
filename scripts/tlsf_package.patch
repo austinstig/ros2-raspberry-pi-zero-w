@@ -1,0 +1,11 @@
+diff a/package.xml b/package.xml
+--- a/package.xml	2018-07-05 15:37:32.956964563 +0100
++++ b/package.xml	2018-07-05 15:38:32.137605734 +0100
+@@ -10,6 +10,7 @@
+ 
+   <buildtool_depend>ament_cmake</buildtool_depend>
+ 
++  <depend>libyaml_vendor</depend>
+   <build_depend>ament_cmake</build_depend>
+   <exec_depend>ament_cmake</exec_depend>
+ 
