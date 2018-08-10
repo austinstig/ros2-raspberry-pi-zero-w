@@ -38,13 +38,6 @@ if [ ! -f aarch64_toolchainfile.cmake ]; then
   echo "set(CMAKE_BUILD_RPATH \"\${PATH_POCO_LIB};\${PATH_YAML_LIB}\")" >> ${TOOLCHAIN}
 fi
 
-# Ignore select ROS packages
-# NB: Currently ignores RCLPY -- the console ros2 applications won't work
-#                                without this but the C++ interface is fine
-#sed -i \
-#  -r \
-#  's/<build(.+?py.+?)/<\!\-\-build\1\-\->/' \
-#  src/ros2/rosidl_defaults/rosidl_default_generators/package.xml
 touch \
   src/ros/resource_retriever/COLCON_IGNORE \
   src/ros2/orocos_kinematics_dynamics/COLCON_IGNORE \
