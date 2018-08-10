@@ -29,14 +29,12 @@ mkdir -p $ROS_ARM_ROOT/src
 pushd $ROS_ARM_ROOT >/dev/null
 
 # Download ROS2 code
-if [ ! -f aarch64_toolchainfile.cmake ]; then
-  wget https://raw.githubusercontent.com/ros2/ros2/release-latest/ros2.repos
-  vcs-import src < ros2.repos
-  echo "update cmake file..."
-  echo "set(PATH_POCO_LIB \"\${CMAKE_CURRENT_LIST_DIR}/build/poco_vendor/poco_external_project_install/lib/\")" >> ${TOOLCHAIN}
-  echo "set(PATH_YAML_LIB \"\${CMAKE_CURRENT_LIST_DIR}/build/libyaml_vendor/libyaml_install/lib/\")" >> ${TOOLCHAIN}
-  echo "set(CMAKE_BUILD_RPATH \"\${PATH_POCO_LIB};\${PATH_YAML_LIB}\")" >> ${TOOLCHAIN}
-fi
+wget https://raw.githubusercontent.com/ros2/ros2/release-latest/ros2.repos
+vcs-import src < ros2.repos
+echo "update cmake file..."
+echo "set(PATH_POCO_LIB \"\${CMAKE_CURRENT_LIST_DIR}/build/poco_vendor/poco_external_project_install/lib/\")" >> ${TOOLCHAIN}
+echo "set(PATH_YAML_LIB \"\${CMAKE_CURRENT_LIST_DIR}/build/libyaml_vendor/libyaml_install/lib/\")" >> ${TOOLCHAIN}
+echo "set(CMAKE_BUILD_RPATH \"\${PATH_POCO_LIB};\${PATH_YAML_LIB}\")" >> ${TOOLCHAIN}
 
 touch \
   src/ros/resource_retriever/COLCON_IGNORE \
