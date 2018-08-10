@@ -31,5 +31,4 @@ Once the chroot is exited the teardown script should be executed to umount the i
 ## First Login
 Write the image to a micro SD card and then insert the card into the Pi. It should auto-connect to the wifi and you can ssh to it using its IP address given by DHCP on the router. The username is "pi" the password is "secret".
 
-# ISSUES
-2018-08-30 - rclpy is not importing module paths correctly
+# See Issues
