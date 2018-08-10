@@ -1,3 +1,0 @@
-[submodule "scripts/build_ros2.bash"]
-	path = scripts/build_ros2.bash
-	url = git@gist.github.com:b1045dc5c08dd009f872ab054d4406ae.git
