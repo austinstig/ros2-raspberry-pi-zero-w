@@ -1,5 +1,5 @@
 #!/bin/bash
-LO_DEVICE=$1
+source loopdevice.txt
 echo "cleanup chroot..."
 rm /mnt/etc/resolv.conf
 mv /mnt/etc/resolv.conf.bk /mnt/etc/resolv.conf

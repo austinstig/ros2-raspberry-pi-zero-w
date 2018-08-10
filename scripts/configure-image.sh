@@ -1,6 +1,5 @@
 #!/bin/bash
 IMAGENAME="arch-rpi-$1.img"
-OS_URL="https://os.archlinuxarm.org/os"
 OS_NAME="ArchLinuxARM-rpi-latest.tar.gz"
 
 echo "setting up image..."
@@ -26,7 +25,7 @@ if [ -f ${OS_NAME} ]; then
 	echo "OS downlaod already done..."
 else
 	echo "downloading: ${OS_NAME}..."
-	wget ${OS_URL}/${OS_NAME}
+	wget http://os.archlinuxarm.org/os/ArchLinuxARM-rpi-latest.tar.gz
 fi
 
 echo "unzip the os image..."
@@ -38,11 +37,21 @@ mount -t sysfs none /mnt/sys
 mount -o bind /dev /mnt/dev
 mount -t devpts none /mnt/dev/pts
 
+echo "setup networking for the chroot..."
 mv /mnt/etc/resolv.conf /mnt/etc/resolv.conf.bk
 cp /etc/resolv.conf /mnt/etc/resolv.conf
+
+echo "copy arm emulator to the image..."
 cp /usr/bin/qemu-arm-static /mnt/usr/bin
-cp ./setup-chroot.sh /mnt/tmp/setup-chroot.sh
-cp &2 /mnt/opt/ros2/
+
+echo "copy ros2 chroot configuration to the image..."
+cp configure-chroot.sh /mnt/tmp/configure-chroot.sh
+
+echo "copy ros2 to the image..."
+cp -r $2 /mnt/opt/ros2/
+
+echo "storing loop device id..."
+echo "LO_DEVICE=${LO_DEVICE}" > loopdevice.txt
 
 echo "you should now be able to chroot: 'sudo chroot /mnt /usr/bin/bash'"
 echo "it operates on the loop device: ${LO_DEVICE}"
